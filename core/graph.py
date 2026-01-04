@@ -2,6 +2,9 @@ import networkx as nx
 import pickle
 import os
 from typing import Dict, Any, Union
+from datetime import datetime
+from core.ml_predictor import predictor
+
 
 # --- CONFIGURATIONS ---
 BASE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)))
@@ -27,9 +30,16 @@ def get_graph() -> nx.DiGraph:
 
 	return _graph_cache
 
-def find_shortest_path(start_node : str, end_node: str) -> Dict[str, Any]:
+def find_shortest_path(start_node : str, end_node: str, departure_time: str = None) -> Dict[str, Any]:
 
 	G = get_graph()
+
+	if departure_time:
+		hour = int(departure_time.split(":")[0])
+	else:
+		hour = datetime.now().hour
+
+	delay_factor = predictor.predict_delay_factor(hour)
 
 	if start_node not in G:
 		return {"error": f"Start node {start_node} not found."}
@@ -40,24 +50,55 @@ def find_shortest_path(start_node : str, end_node: str) -> Dict[str, Any]:
 		# Dijkstra's Algorithm for optimal pathfinding. (Weight: travel time in seconds)
 		path_nodes = nx.shortest_path(G=G, source=start_node, target=end_node, weight='weight')
 
-		total_seconds = nx.shortest_path_length(G, source=start_node, target=end_node, weight='weight')
+		base_seconds = nx.shortest_path_length(G, source=start_node, target=end_node, weight='weight')
 
-		route_details = []
+		real_seconds = base_seconds * delay_factor
 
-		for stop_id in path_nodes:
-			node_data = G.nodes[stop_id]
-			route_details.append({
-				"id": stop_id,
-				"name": node_data.get('name', 'unknown'),
-				"coords": node_data.get('pos', (0,0))
+		route_segments = []
+
+		for i in range(len(path_nodes) - 1):
+			u = path_nodes[i]
+			v = path_nodes[i+1]
+
+			start_data = G.nodes[u]
+			edge_data = G[u][v]
+
+			route_segments.append({
+				"from_stop": {
+					"id": u,
+					"name": start_data.get('name', 'nil'),
+					"coords": start_data.get('pos')
+				},
+				"transport":{
+					"type": edge_data.get('type', 'Unknown'),
+					"route_name": edge_data.get('route_name', ''),
+					"duration_sec": edge_data.get('weight', 0)
+				}
 			})
+
+		last_id = path_nodes[-1]
+		last_data = G.nodes[last_id]
+		route_segments.append({
+			"from_stop": {
+				"id": last_id,
+				"name": last_data.get('name', 'Unknown'),
+				"coords": last_data.get('pos')
+			},
+			"transport": "ARRIVED"
+		})
 
 		return {
 			"status": "success",
 			"stops": len(path_nodes),
-			"total_time_min": round(total_seconds / 60, 2),
-			"route": route_details
+			"total_time_min": round(real_seconds / 60, 2),
+			"traffic_multiplier": delay_factor,
+			"route": route_segments
 		}
 
-	except:
-		return {"error": "No route possible between these 2 stops!"}
+	except nx.NetworkXNoPath:
+		# WAS: return {"error": ...}  <-- THIS CAUSED YOUR BUG
+		return {"status": "error", "message": "No route possible between these stops."}
+
+	except Exception as e:
+		# Catch-all for any other crash
+		return {"status": "error", "message": str(e)}
