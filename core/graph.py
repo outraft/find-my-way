@@ -96,7 +96,6 @@ def find_shortest_path(start_node : str, end_node: str, departure_time: str = No
 		}
 
 	except nx.NetworkXNoPath:
-		# WAS: return {"error": ...}  <-- THIS CAUSED YOUR BUG
 		return {"status": "error", "message": "No route possible between these stops."}
 
 	except Exception as e:
