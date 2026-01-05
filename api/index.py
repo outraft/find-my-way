@@ -29,7 +29,7 @@ def get_advanced_route(
     strategy: str = "fastest" # fastest, comfort, economic
 ) -> Dict[str, Any]:
     """
-    A* Algoritması ve Strateji kullanan gelişmiş rota.
+    Advanced route using A* Algorithm and Strategy.
     """
     result = find_advanced_path(start, end, time, strategy)
 

@@ -112,7 +112,7 @@ def test_economic_strategy_walking(mock_get_graph: MagicMock):
     G.add_node("B", name="End", pos=(0,0.01), elev=0) # Short distance
 
     # Taxi: 10 min (600s)
-    G.add_edge("A", "B", weight=600, type="taxi", route_name="Taksi")
+    G.add_edge("A", "B", weight=600, type="taxi", route_name="Taxi")
     
     # Walk: 15 min (900s) -> Economic Cost: 450 (900 * 0.5)
     # Using an intermediate node for the second path

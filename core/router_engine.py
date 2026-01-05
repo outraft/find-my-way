@@ -61,14 +61,14 @@ class GraphRepository:
         search_lower = str(search_name).lower()
         
         for node, data in self.G.nodes(data=True):
-            # Önce veriyi al
+            # First get the data
             raw_name = data.get('name')
             
-            # Eğer isim yoksa atla
+            # If no name, skip
             if raw_name is None:
                 continue
                 
-            # Güvenli dönüşüm: Ne gelirse gelsin string yap, sonra küçült
+            # Safe conversion: Convert whatever comes to string, then lower
             try:
                 name = str(raw_name).lower()
             except:
@@ -89,7 +89,7 @@ class FastestStrategy(RoutingStrategy):
         seconds = edge_data.get('weight', 0)
         mode = edge_data.get('type', 'walk')
         
-        # Trafik faktörü
+        # Traffic factor
         multiplier = 1.0
         if mode in ['bus', 'minibus']:
              multiplier = predictor.predict_delay_factor(current_time.hour)
@@ -101,7 +101,7 @@ class ComfortStrategy(RoutingStrategy):
         base_cost = FastestStrategy().calculate_cost(edge_data, current_time)
         mode = edge_data.get('type', 'walk')
         
-        # Metroya öncelik ver (Maliyeti düşür), Otobüsü cezalandır (Maliyeti artır)
+        # Prioritize Metro (Lower cost), Penalize Bus (Higher cost)
         if mode in ['metro', 'rail', 'tram']:
             return base_cost * 0.8 
         elif mode in ['bus', 'minibus']:
@@ -113,7 +113,7 @@ class EconomicStrategy(RoutingStrategy):
         base_cost = FastestStrategy().calculate_cost(edge_data, current_time)
         mode = edge_data.get('type', 'walk')
         
-        # Yürümeyi teşvik et (Bedava)
+        # Encourage walking (Free)
         if mode == 'walk':
             return base_cost * 0.5 
             
@@ -130,12 +130,12 @@ class IstanbulRouter:
         if start_id not in G or end_id not in G:
             return None
 
-        # Heuristic: Kuş uçuşu mesafe (Haversine)
+        # Heuristic: Straight line distance (Haversine)
         end_pos = self.repo.get_node_pos(end_id)
         
         def heuristic(u_id):
             u_pos = self.repo.get_node_pos(u_id)
-            # Basitleştirilmiş mesafe hesabı (Lat/Lon farkı)
+            # Simplified distance calculation (Lat/Lon difference)
             return math.sqrt((u_pos[0]-end_pos[0])**2 + (u_pos[1]-end_pos[1])**2) * 100 
 
         # Priority Queue: (f_score, node_id, path_history, current_time, g_score)
@@ -182,7 +182,7 @@ def find_advanced_path(start_node: str, end_node: str, time_str: str = None, str
     router = IstanbulRouter()
     repo = router.repo
 
-    # 1. ID Kontrolü ve İsimle Arama
+    # 1. ID Check and Search by Name
     real_start = start_node
     if start_node not in repo.G:
         # If ID not found, attempt fuzzy search by name
