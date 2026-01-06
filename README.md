@@ -51,7 +51,9 @@ pip install -r requirements.txt
 4. Install Frontend dependencies (npm has to be preinstalled, has to be in the "map_project" directory)
 
 ```
+cd /map_project
 npm install
+cd ..
 ```
 
 5. Run the data pipeline
@@ -69,6 +71,7 @@ python api.py
 7. Start the app (also has to be inside the "map_project" directory)
 
 ```
+cd /map_project
 npm start
 ```
 
