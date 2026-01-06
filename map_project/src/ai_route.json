@@ -1,0 +1,180 @@
+{
+  "meta": {
+    "generated_at": "2026-01-06T23:24:54.988860",
+    "start_id": "18939",
+    "end_id": "18920"
+  },
+  "routes": [
+    {
+      "type": "Fastest",
+      "description": "Minimizes time",
+      "total_duration": 20.5,
+      "segments": [
+        {
+          "stop_id": "Kadıköy-Beşiktaş-Adalar ŞH.",
+          "type": "walk",
+          "line": ""
+        },
+        {
+          "stop_id": "Kadıköy",
+          "type": "metro",
+          "line": "M4"
+        },
+        {
+          "stop_id": "Ayrılık Çeşmesi",
+          "type": "walk",
+          "line": ""
+        },
+        {
+          "stop_id": "Ayrılıkçeşme",
+          "type": "metro",
+          "line": "Marmaray1"
+        },
+        {
+          "stop_id": "Üsküdar",
+          "type": "metro",
+          "line": "Marmaray1"
+        },
+        {
+          "stop_id": "Sirkeci",
+          "type": "walk",
+          "line": ""
+        },
+        {
+          "stop_id": "Sirkeci",
+          "type": "tram",
+          "line": "T1"
+        },
+        {
+          "stop_id": "Eminönü",
+          "type": "tram",
+          "line": "T1"
+        },
+        {
+          "stop_id": "Karaköy",
+          "type": "walk",
+          "line": ""
+        },
+        {
+          "stop_id": "Karaköy ŞH.",
+          "type": "finish",
+          "line": "Arrived"
+        }
+      ]
+    },
+    {
+      "type": "Comfort",
+      "description": "Less transfers/walking",
+      "total_duration": 17.8,
+      "segments": [
+        {
+          "stop_id": "Kadıköy-Beşiktaş-Adalar ŞH.",
+          "type": "walk",
+          "line": ""
+        },
+        {
+          "stop_id": "Kadıköy",
+          "type": "metro",
+          "line": "M4"
+        },
+        {
+          "stop_id": "Ayrılık Çeşmesi",
+          "type": "walk",
+          "line": ""
+        },
+        {
+          "stop_id": "Ayrılıkçeşme",
+          "type": "metro",
+          "line": "Marmaray1"
+        },
+        {
+          "stop_id": "Üsküdar",
+          "type": "metro",
+          "line": "Marmaray1"
+        },
+        {
+          "stop_id": "Sirkeci",
+          "type": "walk",
+          "line": ""
+        },
+        {
+          "stop_id": "Sirkeci",
+          "type": "tram",
+          "line": "T1"
+        },
+        {
+          "stop_id": "Eminönü",
+          "type": "tram",
+          "line": "T1"
+        },
+        {
+          "stop_id": "Karaköy",
+          "type": "walk",
+          "line": ""
+        },
+        {
+          "stop_id": "Karaköy ŞH.",
+          "type": "finish",
+          "line": "Arrived"
+        }
+      ]
+    },
+    {
+      "type": "Economic",
+      "description": "Cheaper/Walking preferred",
+      "total_duration": 16.8,
+      "segments": [
+        {
+          "stop_id": "Kadıköy-Beşiktaş-Adalar ŞH.",
+          "type": "walk",
+          "line": ""
+        },
+        {
+          "stop_id": "Kadıköy",
+          "type": "metro",
+          "line": "M4"
+        },
+        {
+          "stop_id": "Ayrılık Çeşmesi",
+          "type": "walk",
+          "line": ""
+        },
+        {
+          "stop_id": "Ayrılıkçeşme",
+          "type": "metro",
+          "line": "Marmaray1"
+        },
+        {
+          "stop_id": "Üsküdar",
+          "type": "metro",
+          "line": "Marmaray1"
+        },
+        {
+          "stop_id": "Sirkeci",
+          "type": "walk",
+          "line": ""
+        },
+        {
+          "stop_id": "Sirkeci",
+          "type": "tram",
+          "line": "T1"
+        },
+        {
+          "stop_id": "Eminönü",
+          "type": "tram",
+          "line": "T1"
+        },
+        {
+          "stop_id": "Karaköy",
+          "type": "walk",
+          "line": ""
+        },
+        {
+          "stop_id": "Karaköy ŞH.",
+          "type": "finish",
+          "line": "Arrived"
+        }
+      ]
+    }
+  ]
+}
