@@ -55,7 +55,13 @@ npm install
 python etl/ingest_gtfs.py
 ```
 
-6. Start the app
+6. Start up the server
+
+```
+python api.py
+```
+
+7. Start the app
 
 ```
 npm start
