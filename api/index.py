@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException
 from core.graph import find_shortest_path
+from core.router_engine import find_advanced_path
 from typing import Dict, Any, Optional
 
 app = FastAPI()
@@ -20,3 +21,19 @@ def get_route(start: str, end: str, time: Optional[str] = None) -> Dict[str, Any
 		raise HTTPException(status_code=404, detail=result["error"])
 
 	return result
+@app.get("/api/v2/route")
+def get_advanced_route(
+    start: str, 
+    end: str, 
+    time: Optional[str] = None, 
+    strategy: str = "fastest" # fastest, comfort, economic
+) -> Dict[str, Any]:
+    """
+    Advanced route using A* Algorithm and Strategy.
+    """
+    result = find_advanced_path(start, end, time, strategy)
+
+    if result.get("status") == "error":
+        raise HTTPException(status_code=404, detail=result.get("message"))
+
+    return result
