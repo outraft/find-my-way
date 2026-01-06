@@ -20,8 +20,8 @@ Routing Engine: Custom implementation using KD-Trees and Multi-Graph algorithms.
 
 # Getting Started
 Prerequisites:\
-	Node.js & npm
-	Python 3.8+
+*Node.js & npm\
+*Python 3.8+
 	
 
 # Installation
