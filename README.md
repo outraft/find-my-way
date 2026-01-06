@@ -29,7 +29,7 @@ Prerequisites:
 1. Clone the repo
 
 ```
-git clone github.com/outraft/temp-project-3/
+git clone https://github.com/outraft/find-my-way
 ```
 
 
