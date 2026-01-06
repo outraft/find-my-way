@@ -22,7 +22,7 @@ Routing Engine: Custom implementation using KD-Trees and Multi-Graph algorithms.
 Prerequisites:
 * Node.js & npm
 * Python 3.8+
-	
+
 
 # Installation
 
@@ -46,6 +46,7 @@ pip install -r requirements.txt
 4. Install Frontend dependencies
 
 ```
+cd /map_project
 npm install
 ```
 
@@ -61,7 +62,7 @@ python etl/ingest_gtfs.py
 python api.py
 ```
 
-7. Start the app
+7. Start the app (IN THE map_project DIRECTORY)
 
 ```
 npm start
