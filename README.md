@@ -11,36 +11,65 @@ This app helps foreigners and/or tourists with transportation through Istanbul. 
 # Techstack
 
 Frontend: React.js
+
 Backend: Python
-Data Processing: ETL (Exact, Transform, Load) pipelines for transit data
+
+Data Processing: ETL (Extract, Transform, Load) pipelines for transit data
+
 Routing Engine: Custom implementation using KD-Trees and Multi-Graph algorithms.
 
 # Getting Started
-Prerequisites
-	Node.js & npm
-	Python 3.8+
+Prerequisites:
+* Node.js & npm
+* Python 3.8+
+	
 
 # Installation
 
 1. Clone the repo
 
-```git clone [https://github.com/your-username/find-my-way.git](https://github.com/your-username/find-my-way.git)```
+```
+git clone https://github.com/outraft/find-my-way
+```
 
+2. Open up the folder from the terminal
+```
+cd find-my-way/
+```
 
-2. Install Frontend dependencies
+3. Install the required libraries
 
-```npm install```
+```
+pip install -r requirements.txt
+```
 
-3. Run the data pipeline
+4. Install Frontend dependencies
 
-```python etl/ingest_gtfs```
+```
+npm install
+```
 
-4. Start the app
-```npm start```
+5. Run the data pipeline
+
+```
+python etl/ingest_gtfs.py
+```
+
+6. Start up the server
+
+```
+python api.py
+```
+
+7. Start the app
+
+```
+npm start
+```
 
 # Data Files
 
-WARNING: The data is very, very old, such that most stops on the map (e.g. Atlas University Stop, Yildiz Technical University), some types of vehicles (e.g. Metrobus) and the roads given (e.g. Algorithm suggests going back to Besiktas more than using a bus) are not accurate. As the [data given by IETT](https://data.ibb.gov.tr/dataset/public-transport-gtfs-data) progresses, the app will also progress.
+**WARNING**: The data is **very, very old**, such that most stops on the map (e.g. Atlas University Stop, Yildiz Technical University), some types of vehicles (e.g. Metrobus) and the roads given (e.g. Algorithm suggests going back to Besiktas is more viable than using a bus to go to Seyrantepe station) are not accurate. As the [data given by IETT](https://data.ibb.gov.tr/dataset/public-transport-gtfs-data) progresses, the app will also progress.
 
 
 # File Structure
@@ -53,18 +82,18 @@ find-my-way/
 |    |___ processed/
 |    |___ raw/
 |___ etl/
-|___ fornt_end/
+|___ front_end/
 |___ map_project/
 |___ public/
 |___ src/
 |___ tests/
-|___ .DS_Store
 |___ .gitignore
 |___ README.md
 |___ debug.py
+|___ api.py
 |___ package-lock.json
 |___ package.json
 ```
 
 
-> Made by Commitment Issues, with upmost love for the final project ❤️
+> Made by Commitment Issues, with utmost love for the final project ❤️
