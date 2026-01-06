@@ -19,10 +19,8 @@ Data Processing: ETL (Exact, Transform, Load) pipelines for transit data
 Routing Engine: Custom implementation using KD-Trees and Multi-Graph algorithms.
 
 # Getting Started
-Prerequisites
-
+Prerequisites:\
 	Node.js & npm
-	
 	Python 3.8+
 	
 
