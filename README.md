@@ -37,16 +37,20 @@ git clone https://github.com/outraft/find-my-way
 cd find-my-way/
 ```
 
-3. Install the required libraries
+3. Install the required libraries and open up a venv instance
 
 ```
+python -m venv venv
+
+.\venv\Scripts\activate (for windows)
+source venv/bin/activate (for mac/linux)
+
 pip install -r requirements.txt
 ```
 
-4. Install Frontend dependencies
+4. Install Frontend dependencies (npm has to be preinstalled, has to be in the "map_project" directory)
 
 ```
-cd /map_project
 npm install
 ```
 
@@ -56,13 +60,13 @@ npm install
 python etl/ingest_gtfs.py
 ```
 
-6. Start up the server
+6. Start up the server (we recommend another terminal for this, this is the server.)
 
 ```
 python api.py
 ```
 
-7. Start the app (IN THE map_project DIRECTORY)
+7. Start the app (also has to be inside the "map_project" directory)
 
 ```
 npm start
