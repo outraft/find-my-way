@@ -30,19 +30,28 @@ Prerequisites
 
 1. Clone the repo
 
-```git clone [github.com/outraft/temp-project-3/](github.com/outraft/temp-project-3/)```
+```
+git clone [github.com/outraft/temp-project-3/](github.com/outraft/temp-project-3/)
+```
 
 
 2. Install Frontend dependencies
 
-```npm install```
+```
+npm install
+```
 
 3. Run the data pipeline
 
-```python etl/ingest_gtfs```
+```
+python etl/ingest_gtfs
+```
 
 4. Start the app
-```npm start```
+
+```
+npm start
+```
 
 # Data Files
 
