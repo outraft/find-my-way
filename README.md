@@ -14,7 +14,7 @@ Frontend: React.js
 
 Backend: Python
 
-Data Processing: ETL (Exact, Transform, Load) pipelines for transit data
+Data Processing: ETL (Extract, Transform, Load) pipelines for transit data
 
 Routing Engine: Custom implementation using KD-Trees and Multi-Graph algorithms.
 
@@ -32,25 +32,30 @@ Prerequisites:
 git clone https://github.com/outraft/find-my-way
 ```
 
-2. Install the required libraries
+2. Open up the folder from the terminal
+```
+cd find-my-way/
+```
+
+3. Install the required libraries
 
 ```
 pip install -r requirements.txt
 ```
 
-3. Install Frontend dependencies
+4. Install Frontend dependencies
 
 ```
 npm install
 ```
 
-4. Run the data pipeline
+5. Run the data pipeline
 
 ```
-python etl/ingest_gtfs
+python etl/ingest_gtfs.py
 ```
 
-5. Start the app
+6. Start the app
 
 ```
 npm start
@@ -84,4 +89,4 @@ find-my-way/
 ```
 
 
-> Made by Commitment Issues, with upmost love for the final project ❤️
+> Made by Commitment Issues, with utmost love for the final project ❤️
