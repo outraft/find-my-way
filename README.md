@@ -66,12 +66,11 @@ find-my-way/
 |    |___ processed/
 |    |___ raw/
 |___ etl/
-|___ fornt_end/
+|___ front_end/
 |___ map_project/
 |___ public/
 |___ src/
 |___ tests/
-|___ .DS_Store
 |___ .gitignore
 |___ README.md
 |___ debug.py
