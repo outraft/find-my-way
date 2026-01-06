@@ -32,20 +32,25 @@ Prerequisites:
 git clone https://github.com/outraft/find-my-way
 ```
 
+2. Install the required libraries
 
-2. Install Frontend dependencies
+```
+pip install -r requirements.txt
+```
+
+3. Install Frontend dependencies
 
 ```
 npm install
 ```
 
-3. Run the data pipeline
+4. Run the data pipeline
 
 ```
 python etl/ingest_gtfs
 ```
 
-4. Start the app
+5. Start the app
 
 ```
 npm start
