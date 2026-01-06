@@ -53,7 +53,7 @@ npm start
 
 # Data Files
 
-WARNING: The data is very, very old, such that most stops on the map (e.g. Atlas University Stop, Yildiz Technical University), some types of vehicles (e.g. Metrobus) and the roads given (e.g. Algorithm suggests going back to Besiktas more than using a bus) are not accurate. As the [data given by IETT](https://data.ibb.gov.tr/dataset/public-transport-gtfs-data) progresses, the app will also progress.
+**WARNING**: The data is **very, very old**, such that most stops on the map (e.g. Atlas University Stop, Yildiz Technical University), some types of vehicles (e.g. Metrobus) and the roads given (e.g. Algorithm suggests going back to Besiktas is more viable than using a bus to go to Seyrantepe station) are not accurate. As the [data given by IETT](https://data.ibb.gov.tr/dataset/public-transport-gtfs-data) progresses, the app will also progress.
 
 
 # File Structure
