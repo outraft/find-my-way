@@ -11,20 +11,26 @@ This app helps foreigners and/or tourists with transportation through Istanbul. 
 # Techstack
 
 Frontend: React.js
+
 Backend: Python
+
 Data Processing: ETL (Exact, Transform, Load) pipelines for transit data
+
 Routing Engine: Custom implementation using KD-Trees and Multi-Graph algorithms.
 
 # Getting Started
 Prerequisites
+
 	Node.js & npm
+	
 	Python 3.8+
+	
 
 # Installation
 
 1. Clone the repo
 
-```git clone [https://github.com/your-username/find-my-way.git](https://github.com/your-username/find-my-way.git)```
+```git clone [github.com/outraft/temp-project-3/](github.com/outraft/temp-project-3/)```
 
 
 2. Install Frontend dependencies
