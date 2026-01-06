@@ -1,0 +1,52 @@
+import pandas as pd
+import networkx as nx
+import json
+import math
+from networkx.readwrite import json_graph
+
+# --- DOSYA YOLUNU TEKRAR BURAYA YAPIŞTIR ---
+dosya_yolu = r"data/processed/istanbul_graph.pkl" 
+# -------------------------------------------
+
+def clean_nan(obj):
+    """
+    Verinin içindeki NaN (Bozuk sayı) değerlerini null yapar.
+    """
+    if isinstance(obj, float):
+        if math.isnan(obj) or math.isinf(obj):
+            return None  # NaN ise null yap
+    elif isinstance(obj, dict):
+        return {k: clean_nan(v) for k, v in obj.items()}
+    elif isinstance(obj, list):
+        return [clean_nan(v) for v in obj]
+    return obj
+
+try:
+    print(f"Dosya okunuyor: {dosya_yolu}")
+    data = pd.read_pickle(dosya_yolu)
+    
+    cikti_adi = "veri.json"
+    json_data = {}
+
+    # Eğer veri NetworkX Graph ise
+    if isinstance(data, (nx.Graph, nx.DiGraph, nx.MultiDiGraph)):
+        json_data = json_graph.node_link_data(data)
+        print("✅ Veri Graph formatında alındı.")
+    else:
+        # Değilse düz çevirmeyi dene
+        print("⚠️ Veri Graph değil, düz çevriliyor.")
+        # Burası basit senaryo, ama senin verin Graph olduğu için üstteki çalışacak.
+
+    # TEMİZLİK ZAMANI: NaN değerlerini temizle
+    print("🧹 Veri temizleniyor (NaN temizliği)...")
+    cleaned_data = clean_nan(json_data)
+
+    # Dosyayı kaydet
+    with open(cikti_adi, "w", encoding="utf-8") as f:
+        json.dump(cleaned_data, f, ensure_ascii=False)
+
+    print(f"✅ İŞLEM TAMAM! Yeni '{cikti_adi}' dosyası oluşturuldu.")
+    print("👉 Şimdi bu yeni veri.json dosyasını alıp src klasörüne at!")
+
+except Exception as e:
+    print(f"❌ HATA: {e}")
